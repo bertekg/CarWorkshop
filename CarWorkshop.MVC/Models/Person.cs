@@ -1,8 +1,6 @@
-﻿namespace CarWorkshop.MVC.Models
+﻿namespace CarWorkshop.MVC.Models;
+public class Person
 {
-    public class Person
-    {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set;}
-    }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
 }
