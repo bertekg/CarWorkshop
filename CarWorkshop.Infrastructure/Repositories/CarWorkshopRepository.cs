@@ -18,6 +18,9 @@ public class CarWorkshopRepository : ICarWorkshopRepository
         await _dbContext.SaveChangesAsync();
     }
 
+    public async Task<IEnumerable<Domain.Entities.CarWorkshop>> GetAll()
+        => await _dbContext.CarWorkhops.ToListAsync();
+
     public Task<Domain.Entities.CarWorkshop?> GetByName(string name)
         => _dbContext.CarWorkhops.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
 }

@@ -13,6 +13,12 @@ public class CarWorkshopController : Controller
         _carWorkshopService = carWorkshopService;
     }
 
+    public async Task<IActionResult> Index()
+    {
+        var carWorkshops = await _carWorkshopService.GetAll();
+        return View(carWorkshops);
+    }
+
     public IActionResult Create()
     {
         return View();
@@ -26,6 +32,6 @@ public class CarWorkshopController : Controller
             return View(carWorkhop);
         }
         await _carWorkshopService.Create(carWorkhop);
-        return RedirectToAction(nameof(Create)); // TODO: refactor
+        return RedirectToAction(nameof(Index)); // TODO: refactor
     }
 }
