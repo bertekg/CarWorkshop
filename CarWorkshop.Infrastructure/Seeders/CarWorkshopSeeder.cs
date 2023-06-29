@@ -19,7 +19,7 @@ public class CarWorkshopSeeder
             {
                 Domain.Entities.CarWorkshop mazdaAso = new Domain.Entities.CarWorkshop()
                 {
-                    Name = "Mazd ASO",
+                    Name = "Mazda ASO",
                     Description = "Autoryzowany serwis Mazda",
                     ContactDetails = new()
                     {

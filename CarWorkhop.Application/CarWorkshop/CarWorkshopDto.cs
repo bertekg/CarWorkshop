@@ -1,4 +1,6 @@
-﻿namespace CarWorkshop.Application.CarWorkshop;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CarWorkshop.Application.CarWorkshop;
 
 public class CarWorkshopDto
 {

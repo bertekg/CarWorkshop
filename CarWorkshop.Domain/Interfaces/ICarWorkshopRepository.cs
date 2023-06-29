@@ -2,5 +2,6 @@
 
 public interface ICarWorkshopRepository
 {
-    Task Create(Domain.Entities.CarWorkshop carWorkshop);
+    Task Create(Entities.CarWorkshop carWorkshop);
+    Task<Entities.CarWorkshop?> GetByName(string name);
 }

@@ -21,6 +21,10 @@ public class CarWorkshopController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(CarWorkshopDto carWorkhop)
     {
+        if (ModelState.IsValid == false)
+        {
+            return View(carWorkhop);
+        }
         await _carWorkshopService.Create(carWorkhop);
         return RedirectToAction(nameof(Create)); // TODO: refactor
     }
