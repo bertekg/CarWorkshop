@@ -19,7 +19,7 @@ public class EditCarWorkshopCommandHandler : IRequestHandler<EditCarWorkshopComm
         var carWorkshop = await _repository.GetByEncodedName(request.EncodedName!);
 
         var user = _userContext.GetCurrentUser();
-        var isEditable = user != null && carWorkshop.CreatedById == user.Id;
+        var isEditable = user != null && (carWorkshop.CreatedById == user.Id || user.IsInRole("Moderator"));
 
         if (isEditable == false)
         {
