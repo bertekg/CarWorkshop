@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CarWorkshop.Application.CarWorkshop;
+﻿namespace CarWorkshop.Application.CarWorkshop;
 
 public class CarWorkshopDto
 {
@@ -12,4 +10,5 @@ public class CarWorkshopDto
     public string? City { get; set; }
     public string? PostalCode { get; set; }
     public string? EncodedName { get; set; }
+    public bool IsEditable { get; set; }
 }

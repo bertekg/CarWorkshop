@@ -5,7 +5,7 @@ namespace CarWorkshop.Application.ApplicationUser;
 
 public interface IUserContext
 {
-    CurrentUser GetCurrentUser();
+    CurrentUser? GetCurrentUser();
 }
 
 public class UserContext : IUserContext
@@ -16,12 +16,17 @@ public class UserContext : IUserContext
     {
         _httpContextAccessor = httpContextAccessor;
     }
-    public CurrentUser GetCurrentUser()
+    public CurrentUser? GetCurrentUser()
     {
         var user = _httpContextAccessor.HttpContext?.User;
         if (user == null)
         {
             throw new InvalidOperationException("Context user is not present");
+        }
+
+        if (user.Identity == null || user.Identity.IsAuthenticated == false)
+        {
+            return null;
         }
 
         var id = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
