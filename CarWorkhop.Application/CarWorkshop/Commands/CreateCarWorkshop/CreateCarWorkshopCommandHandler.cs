@@ -22,7 +22,7 @@ public class CreateCarWorkshopCommandHandler : IRequestHandler<CreateCarWorkshop
     {
         var currentUser = _userContext.GetCurrentUser();
 
-        if (currentUser == null || currentUser.IsInRole("Owner") == false)
+        if (currentUser == null || (currentUser.IsInRole("Owner") == false && currentUser.IsInRole("Moderator") == false))
         {
             return Unit.Value;
         }
