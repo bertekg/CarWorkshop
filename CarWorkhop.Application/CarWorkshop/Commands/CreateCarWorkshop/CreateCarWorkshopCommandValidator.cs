@@ -1,11 +1,11 @@
 ﻿using CarWorkshop.Domain.Interfaces;
 using FluentValidation;
 
-namespace CarWorkshop.Application.CarWorkshop;
+namespace CarWorkshop.Application.CarWorkshop.Commands.CreateCarWorkshop;
 
-public class CarWorkshopDtoValidator : AbstractValidator<CarWorkshopDto>
+public class CreateCarWorkshopCommandValidator : AbstractValidator<CreateCarWorkshopCommand>
 {
-    public CarWorkshopDtoValidator(ICarWorkshopRepository repository)
+    public CreateCarWorkshopCommandValidator(ICarWorkshopRepository repository)
     {
         RuleFor(c => c.Name)
             .NotEmpty()
@@ -19,7 +19,7 @@ public class CarWorkshopDtoValidator : AbstractValidator<CarWorkshopDto>
                     context.AddFailure($"{value} is not unique name for car workshop");
                 }
             });
-        
+
         RuleFor(c => c.Description)
             .NotEmpty().WithMessage("Please enter description");
 
