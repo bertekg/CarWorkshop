@@ -17,7 +17,8 @@ public static class ServiceCollectionExtencsion
             configuration.GetConnectionString("CarWorkshoop")));
 
         services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<CarWorkshopDbContext>();
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<CarWorkshopDbContext>();
 
         services.AddScoped<CarWorkshopSeeder>();
         services.AddScoped<ICarWorkshopRepository, CarWorkshopRepository>();
