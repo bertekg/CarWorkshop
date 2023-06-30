@@ -9,6 +9,7 @@ public class CarWorkshopDbContext : IdentityDbContext
         
     }
     public DbSet<Domain.Entities.CarWorkshop> CarWorkhops { get; set; }
+    public DbSet<Domain.Entities.CarWorkshopService> Services { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -16,5 +17,10 @@ public class CarWorkshopDbContext : IdentityDbContext
 
         modelBuilder.Entity<Domain.Entities.CarWorkshop>()
             .OwnsOne(c => c.ContactDetails);
+
+        modelBuilder.Entity<Domain.Entities.CarWorkshop>()
+            .HasMany(c => c.Services)
+            .WithOne(s => s.CarWorkshop)
+            .HasForeignKey(s => s.CarWorkshopId);
     }
 }
