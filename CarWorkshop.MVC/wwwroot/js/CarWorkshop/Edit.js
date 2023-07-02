@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+
+    LoadCarWorkshopServices()
+
     $("#createCarWorkshopServiceModal form").submit(function (event) {
         event.preventDefault();
 
@@ -8,6 +11,7 @@
             data: $(this).serialize(),
             success: function (data) {
                 toastr["success"]("Created carworkshop service")
+                LoadCarWorkshopServices()
             },
             error: function () {
                 toastr["error"]("Something went wrong")
